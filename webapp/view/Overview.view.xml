@@ -43,8 +43,20 @@
         </f:SimpleForm>
       </content>
     </Panel>
-    <Table headerText="Customers" growing="true" growingThreshold="5"  mode="SingleSelectLeft" selectionChange=".onCustomerChange" 
-    class="sapUiResponsiveMargin" width="auto" items="{/Customers}"> 
+    <Table id="customerTable" growing="true" growingThreshold="5"  mode="SingleSelectLeft" selectionChange=".onCustomerChange" 
+    class="sapUiResponsiveMargin" width="auto" 
+        items="{ path: '/Customers',
+        sorter: [
+          {path: 'City', group: true},
+          {path: 'CustomerName'} ]
+      }"> 
+      <headerToolbar>
+        <Toolbar>
+          <Title text="Customers"/>
+          <ToolbarSpacer/>
+          <SearchField width="40%" search=".onFilterCustomers"/>
+        </Toolbar>
+      </headerToolbar>
     <!-- Via mode="SingleSelectLeft" you achieve that only one customer in the table can be selected via a left-positioned selector. -->
     <!-- Via selectionChange=".onCustomerChange" you register a method - which still has to be implemented - for the event that the user changes the selected customer in the table. -->
     <!-- The items="{/Customers}" attribute of the <Table> tag is used to pass the elements of the Customers array from the JSON model to the items aggregation of the table. -->
