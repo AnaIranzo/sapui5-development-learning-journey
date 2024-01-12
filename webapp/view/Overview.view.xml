@@ -72,7 +72,7 @@
     </columns>
     <items>
     <!-- <items> -->
-      <ColumnListItem>
+      <ColumnListItem type="Navigation" press=".onNavToDetails">
         <cells>
           <ObjectIdentifier title="{CustomerName}"/>
           <Text text="{Street}"/>
@@ -95,7 +95,7 @@
         <Column><header><Text text="{i18n>cancellationColumnHeader}"/></header></Column>
       </columns>
       <items>
-        <ColumnListItem>
+        <ColumnListItem >
           <cells>
             <ObjectIdentifier title="{AirlineID}"/>
             <ObjectIdentifier title="{ConnectionNumber}"/>
@@ -122,6 +122,4 @@
     </Table>
     </content>
 </Page>
-
-   
 </mvc:View>
