@@ -9,6 +9,15 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("sap.training.exc.controller.Detail", {
+            onInit: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
+              },
+
+            _onObjectMatched: function (oEvent) {
+            this.getView().bindElement("/UX_Customer" + oEvent.getParameter("arguments").customerId);
+            },
+            /* The oEvent parameter of the _onObjectMatched event handler method is used to query the value set in the Overview view controller for the customerId parameter of the detail route */
 
             onNavBack: function () {
                 var oHistory = History.getInstance();
